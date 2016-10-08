@@ -10,7 +10,7 @@ router.get('/search', function(req, res, next) {
 	console.log(typeof(term));
 
 	//search url
-	var url ="http://api.musixmatch.com/ws/1.1/track.search?apikey=a1583a3ec43dc2a4f4850d111da66cca&q_track="+term+"&q_lyrics="+term;
+	var url ="http://api.musixmatch.com/ws/1.1/track.search?apikey=a1583a3ec43dc2a4f4850d111da66cca&q_lyrics="+term
 
 	request(url, function(error, response, body) {
 		
