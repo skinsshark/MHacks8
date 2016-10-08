@@ -1,11 +1,10 @@
 # MHacks8
 
-to run:
-
+**To run:**
+```
 clone
-
 npm install
-
 nodemon to run 
+```
 
-search endpoint is localhost:3000/lyrics/search
+**Search endpoint:** `localhost:3000/lyrics/search`
