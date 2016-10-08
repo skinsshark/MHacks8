@@ -1,2 +1,10 @@
 # MHacks8
-tba
+
+**To run:**
+```
+clone
+npm install
+nodemon to run 
+```
+
+**Search endpoint:** `localhost:3000/lyrics/search`
