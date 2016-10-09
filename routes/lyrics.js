@@ -20,7 +20,7 @@ router.get('/search', function(req, res, next) {
 
 		var resultsarr = json.results;
 		var result = resultsarr[0].title.replace('<b>','').replace('</b>', '').replace('&#39;', "'").replace('LYRICS', '');
-		
+
 		console.log(spotifyURL+encodeURI(result));
 		console.log(spotifyURL+result);
 
@@ -34,16 +34,7 @@ router.get('/search', function(req, res, next) {
 			track={trackid: trackid, trackname: trackname, artist: artist};
 			res.jsonp(track);
 		});
-
-
-		//res.end();
-		//console.log();
-		// $ = cheerio.load(body);
-
-		// console.log($('.list-search', 'body'));
-	//  res.send(test);
 	});
- 	//res.render('index', { title: 'Express' });
 });
 
 module.exports = router;
