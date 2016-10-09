@@ -55,29 +55,6 @@ app.post('/', function(req, res) {
 
     console.log(result);
 
-    // console.log(spotifyURL+encodeURI(result));
-    // console.log(spotifyURL+result);
-    //
-    // request(spotifyURL+result, function(error, response, body){
-    //
-    // 	spotifyJSON = JSON.parse(body);
-    // 	trackid =spotifyJSON.tracks.items[0].id;
-    // 	trackname = spotifyJSON.tracks.items[0].name;
-    // 	artist = spotifyJSON.tracks.items[0].artists[0].name;
-    //
-    // 	track={trackid: trackid, trackname: trackname, artist: artist};
-    // });
-
-
-    //res.end();
-    //console.log();
-    // $ = cheerio.load(body);
-
-    // console.log($('.list-search', 'body'));
-    //  res.send(test);
-
-    //res.render('index', { title: 'Express' });
-
     var query = result;
 
     request('https://itunes.apple.com/search?term='+encodeURIComponent(query)+'&limit=1&entity=song', function (error, response, body) {
@@ -115,33 +92,26 @@ app.post('/', function(req, res) {
         }
       } //what we want Alexa to respond with
 
-
-        // var response = {
-        //         "version": "1.0",
-        //         "response": {
-        //             "shouldEndSession": false,
-        //             "outputSpeech": {
-        //                 "type": "SSML",
-        //                 "ssml": "<speak>"+previewUrl+"</speak>"
-        //             }
-        //         }
-        //     } //what we want Alexa to respond with
-
         res.json(response); //tell express to send the info back
-
-
       } else {
         console.log(error);
         console.log(response);
         console.log(body);
       }
     })
-
   });
-
-
-
 });
 
-app.listen(3000, function () {
+const options = {
+ key: fs.readFileSync('/etc/letsencrypt/live/mhacks8.tk/privkey.pem'),
+ cert: fs.readFileSync('/etc/letsencrypt/live/mhacks8.tk/fullchain.pem')
+};
+
+var port = 443;
+
+var server = https.createServer(options, app).listen(port, function(){
+ console.log("Express server listening on port " + port);
+});
+
+app.listen(80, function () {
 });
