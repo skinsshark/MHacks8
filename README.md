@@ -3,7 +3,13 @@
 **To run:**
 ```
 npm install
-nodemon 
+[sudo] npm install forever -g
+forever start *index.js
+forever logs
+```
+**To stop all running scripts:**
+```
+forever stopall
 ```
 
 **Search endpoint:** `localhost:3000/lyrics/search`
