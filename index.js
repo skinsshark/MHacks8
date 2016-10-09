@@ -8,8 +8,7 @@ app.use(bodyParser.json());
 
 var request = require('request');
 
-app.listen(3000, function () {
-});
+
 
 app.get('/song.m4a', function(req, res){
   var externalReq = http.request({
@@ -104,6 +103,9 @@ app.post('/', function(req, res) {
       }
     })
   });
+});
+
+app.listen(3000, function () {
 });
 
 // const options = {
