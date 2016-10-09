@@ -38,7 +38,7 @@ app.post('/', function(req, res) {
   var term = req['body']['request']['intent']['slots']['Song']['value'];
 
   //search url
-  var spotifyURL ="https://api.spotify.com/v1/search?type=track&limit=1&q=";
+  //var spotifyURL ="https://api.spotify.com/v1/search?type=track&limit=1&q=";
   var googleURL="https://www.googleapis.com/customsearch/v1element?key=AIzaSyCVAXiUzRYsML1Pv6RwSG1gunmMikTzQqY&rsz=filtered_cse&num=10&hl=en&prettyPrint=true&source=gcsc&gss=.com&sig=33c7bfb92330999684a54e63dca8bb29&cx=015977173612723478991:ez8fvazfs9w&sort=&googlehost=www.google.com&oq=we%27ll%20never%20drink%20your%20medince&gs_l=partner.3...4757.17038.9.17148.42.30.12.0.0.0.336.3032.18j7j3j1.29.0.gsnos%2Cn%3D13...0.17021j47983047j44j3..1ac.1.25.partner..228.0.0.k052hMh-2YY&callback=google.search.Search.apiary5673&nocache=1475962889923&q=";
 
 
@@ -104,16 +104,16 @@ app.post('/', function(req, res) {
   });
 });
 
-app.listen(3000, function () {
+app.listen(80, function () {
 });
 
-// const options = {
-//  key: fs.readFileSync('/etc/letsencrypt/live/mhacks8.tk/privkey.pem'),
-//  cert: fs.readFileSync('/etc/letsencrypt/live/mhacks8.tk/fullchain.pem')
-// };
-//
-// var port = 443;
-//
-// var server = https.createServer(options, app).listen(port, function(){
-//  console.log("Express server listening on port " + port);
-// });
+ const options = {
+  key: fs.readFileSync('/etc/letsencrypt/live/mhacks8.tk/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/mhacks8.tk/fullchain.pem')
+ };
+
+ var port = 443;
+
+ var server = https.createServer(options, app).listen(port, function(){
+  console.log("Express server listening on port " + port);
+ });
