@@ -8,6 +8,9 @@ app.use(bodyParser.json());
 
 var request = require('request');
 
+app.listen(3000, function () {
+});
+
 app.get('/song.m4a', function(req, res){
   var externalReq = http.request({
        hostname: "a1126.phobos.apple.com",
@@ -103,16 +106,13 @@ app.post('/', function(req, res) {
   });
 });
 
-const options = {
- key: fs.readFileSync('/etc/letsencrypt/live/mhacks8.tk/privkey.pem'),
- cert: fs.readFileSync('/etc/letsencrypt/live/mhacks8.tk/fullchain.pem')
-};
-
-var port = 443;
-
-var server = https.createServer(options, app).listen(port, function(){
- console.log("Express server listening on port " + port);
-});
-
-app.listen(80, function () {
-});
+// const options = {
+//  key: fs.readFileSync('/etc/letsencrypt/live/mhacks8.tk/privkey.pem'),
+//  cert: fs.readFileSync('/etc/letsencrypt/live/mhacks8.tk/fullchain.pem')
+// };
+//
+// var port = 443;
+//
+// var server = https.createServer(options, app).listen(port, function(){
+//  console.log("Express server listening on port " + port);
+// });
