@@ -1,22 +1,19 @@
 {
-  "intents": [
-     {
-      "intent": "GetSongIntent",
-      "slots": [
+    "intents": [
         {
-          "name": "Song",
-          "type": "AMAZON.LITERAL"
-    	}  
-      ]
-     },
-    {
-      "intent": "AMAZON.HelpIntent"
-    },
-    {
-      "intent": "AMAZON.StopIntent"
-    },
-    {
-      "intent": "AMAZON.CancelIntent"
-    }
-  ]
- }
+            "intent": "AMAZON.ResumeIntent"
+        },
+        {
+            "intent": "AMAZON.PauseIntent"
+        },
+        {
+            "intent": "GetSongIntent",
+            "slots": [
+                {
+                    "name": "Song",
+                    "type": "AMAZON.LITERAL"
+                }
+            ]
+        }
+    ]
+}
