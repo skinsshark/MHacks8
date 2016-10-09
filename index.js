@@ -11,15 +11,10 @@ var request = require('request');
 
 
 
-app.get('/song.m4a', function(req, res){
-  var externalReq = http.request({
-       hostname: "a1126.phobos.apple.com",
-       path: "/us/r1000/074/Music2/v4/d3/02/b6/d302b624-b97e-a55b-4035-e96a5cd63a5e/mzaf_726853883417276588.aac.m4a"
-   }, function(externalRes) {
-       res.setHeader("content-disposition", "attachment; filename=song.m4a");
-       externalRes.pipe(res);
-   });
-   externalReq.end();
+app.get('/song.mp3', function(req, res){
+  res.setHeader("content-disposition", "attachment; filename=song.mp3");
+
+  song = request.get(req.query.song).pipe(res);
 })
 
 // respond with "hello world" when a GET request is made to the homepage
@@ -61,6 +56,8 @@ app.post('/', function(req, res) {
 
     var query = result;
 
+    console.log(query);
+
     request('https://itunes.apple.com/search?term='+encodeURIComponent(query)+'&limit=1&entity=song', function (error, response, body) {
       if (!error && response.statusCode == 200) {
         // console.log(body) // Show the HTML for the Google homepage.
@@ -85,7 +82,8 @@ app.post('/', function(req, res) {
               "audioItem": {
                 "stream": {
                   // "url": previewUrl.replace("http://", "https://"),
-                  "url": "https://mhacks8.tk/song.m4a",
+                  "url": "https://f7a5f5cc.ngrok.io/song.mp3?song="+encodeURIComponent(previewUrl),
+                  // "url": "https://archive.org/download/testmp3testfile/mpthreetest.mp3",
                   "token": "hype",
                   // "expectedPreviousToken": "string",
                   "offsetInMilliseconds": 0
