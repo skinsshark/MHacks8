@@ -1,0 +1,9 @@
+{
+  "name": "MHacks",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "alexa-sdk": "^1.0.7",
+    "request": "^2.75.0"
+  }
+}
