@@ -7,7 +7,7 @@ const responses = {
     ASK_MESSAGE: "Sing me some lyrics.",
     STOP_MESSAGE: 'Goodbye!',
     PAUSE_MESSAGE: "Anomia paused",
-    RESUME_INTENT: "Aomia resumed",
+    RESUME_INTENT: "Anomia resumed",
     HELP_MESSAGE: "Sing some lyrics to me, and I will find the song for you.",
     SEARCH_ERROR: 'Either you must suck at singing, or I\' just bad at listening. I couldn\'t find the song you were trying to sing',
     SEARCH_CONNECTION_ERROR: "Sorry, an error occured while I was searching for that song",
@@ -23,11 +23,11 @@ var googleURL = "https://www.googleapis.com/customsearch/v1element?key=AIzaSyCVA
 
 const handlers = {
     'LaunchRequest': function() {
-        console.log("LAUCH REQUEST RECIEVED", this.event);
+        console.log("LAUCH REQUEST RECEIVED", this.event);
         this.emit(':ask', responses.ASK_MESSAGE, responses.ASK_MESSAGE);
     },
     'GetSongIntent': function() {
-        console.log("GET SONG INTENT RECIEVED", this.event);
+        console.log("GET SONG INTENT RECEIVED", this.event);
         var speechOutput = this.event.request.intent.slots.Song.value;
 
         console.log("speechoutput", speechOutput);
@@ -44,7 +44,7 @@ const handlers = {
 
             try {
 
-                console.log("RESPONSE FROM GOOGLE RECIEVED", resp, body);
+                console.log("RESPONSE FROM GOOGLE RECEIVED", resp, body);
                 //find the first song that matches the search term, parse it and clean up the text
                 var result = JSON.parse(body).results[0].title;
                 while (result.indexOf('</b>') != -1 || result.indexOf('<b>') != -1 || result.indexOf('&#39;') != -1 || result.indexOf('LYRICS') != -1) {
@@ -63,7 +63,7 @@ const handlers = {
                     }
 
                     try {
-                        console.log("RESPONSE FROM SPOTIFY RECIEVED", resp, body);
+                        console.log("RESPONSE FROM SPOTIFY RECEIVED", resp, body);
 
                         var bodyJSON = JSON.parse(body);
                         var streamingURL = bodyJSON.tracks.items[0].preview_url;
@@ -91,31 +91,31 @@ const handlers = {
 
     },
     'AMAZON.HelpIntent': function() {
-        console.log("HELP INTENT RECIEVED", this.event);
+        console.log("HELP INTENT RECEIVED", this.event);
         this.emit(':ask', responses.HELP_MESSAGE, responses.HELP_MESSAGE);
     },
     'AMAZON.CancelIntent': function() {
-        console.log("CANCEL INTENT RECIEVED", this.event);
+        console.log("CANCEL INTENT RECEIVED", this.event);
         this.response.audioPlayerStop();
         this.emit(':tell', responses.STOP_MESSAGE);
     },
     'AMAZON.StopIntent': function() {
-        console.log("STOP INTENT RECIEVED", this.event);
+        console.log("STOP INTENT RECEIVED", this.event);
         this.response.audioPlayerStop();
         this.emit(':tell', responses.STOP_MESSAGE);
     },
     'AMAZON.PauseIntent' : function(){
-        console.log("PAUSE INTENT RECIEVED", this.event);
+        console.log("PAUSE INTENT RECEIVED", this.event);
 
         this.response.audioPlayerStop();
         this.emit(':tell', responses.PAUSE_MESSAGE);
     },
     'AMAZON.ResumeIntent' : function(){
-        console.log("RESUME INTENT RECIEVED", this.event);
+        console.log("RESUME INTENT RECEIVED", this.event);
         this.emit(':tell', responses.RESUME_INTENT);
     },
     'SessionEndedRequest': function() {
-        console.log("SESSION END INTENT RECIEVED", this.event);
+        console.log("SESSION END INTENT RECEIVED", this.event);
         this.response.audioPlayerStop();
         this.emit(':tell', responses.STOP_MESSAGE);
     },
