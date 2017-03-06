@@ -9,7 +9,7 @@ const responses = {
     PAUSE_MESSAGE: "Anomia paused",
     RESUME_INTENT: "Anomia resumed",
     HELP_MESSAGE: "Sing some lyrics to me, and I will find the song for you.",
-    SEARCH_ERROR: 'Either you must suck at singing, or I\' just bad at listening. I couldn\'t find the song you were trying to sing',
+    SEARCH_ERROR: 'Either you must suck at singing, or I\'m just bad at listening. I couldn\'t find the song you were trying to sing',
     SEARCH_CONNECTION_ERROR: "Sorry, an error occured while I was searching for that song",
     SPOTIFY_ERROR: "I wasn't able to find a recording of that song",
     SPOTIFY_CONNECTION_ERROR: "Sorry, an error occured while I was searching for that song's recording",
@@ -23,7 +23,7 @@ var googleURL = "https://www.googleapis.com/customsearch/v1element?key=AIzaSyCVA
 
 const handlers = {
     'LaunchRequest': function() {
-        console.log("LAUCH REQUEST RECEIVED", this.event);
+        console.log("LAUNCH REQUEST RECEIVED", this.event);
         this.emit(':ask', responses.ASK_MESSAGE, responses.ASK_MESSAGE);
     },
     'GetSongIntent': function() {
