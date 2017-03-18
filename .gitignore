@@ -7,9 +7,18 @@ lib-cov
 *.pid
 *.gz
 
+# dist files are generated & uploaded to lambda
+dist
+dist.zip
+
+
 pids
 logs
 results
 
 node_modules
 npm-debug.log
+
+# config file for uploading to lambda
+# contains keys and credentials
+config.json

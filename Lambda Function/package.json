@@ -1,9 +1,20 @@
 {
-  "name": "MHacks",
-  "version": "0.0.0",
+  "name": "AnomiaSongFinder",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "alexa-sdk": "^1.0.7",
     "request": "^2.75.0"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.1.4",
+    "del": "^1.1.0",
+    "gulp": "^3.8.10",
+    "gulp-install": "^0.2.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-zip": "^2.0.2",
+    "kinesis": "^1.0.2",
+    "run-sequence": "^1.0.2",
+    "stream": "0.0.2"
   }
 }

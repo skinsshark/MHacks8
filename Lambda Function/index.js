@@ -24,6 +24,8 @@ var googleURL = "https://www.googleapis.com/customsearch/v1element?key=AIzaSyCVA
 const handlers = {
     'LaunchRequest': function() {
         console.log("LAUNCH REQUEST RECEIVED", this.event);
+
+        console.log()
         this.emit(':ask', responses.ASK_MESSAGE, responses.ASK_MESSAGE);
     },
     'GetSongIntent': function() {
